@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://personal-shopper-ai-api.onrender.com/:path*"
+    }
+  ]
+}
