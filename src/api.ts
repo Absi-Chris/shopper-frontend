@@ -1,6 +1,6 @@
 export type Product={id:number;sku:string;name:string;brand:string;category:string;price:number;stock:number;rating:number};
 export type Cart={items:{product_id:number;name:string;quantity:number;unit_price:number;line_total:number}[];total:number};
-const BASE=(import.meta.env.VITE_API_BASE || '/api').replace(/\/$/,'');
+const BASE=(import.meta.env.PROD ? '/api' : import.meta.env.VITE_API_BASE || '/api').replace(/\/$/,'');
 const USER_ID='demo-user'; // Demo only; backend header is not authentication.
 async function request<T>(path:string, init:RequestInit={}):Promise<T>{
  const response=await fetch(BASE+path,{...init,headers:{'X-User-Id':USER_ID,...(init.body instanceof FormData?{}:{'Content-Type':'application/json'}),...init.headers}});
